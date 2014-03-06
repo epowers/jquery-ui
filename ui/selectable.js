@@ -25,6 +25,10 @@
 	}
 }(function( $ ) {
 
+function selfAndParents() {
+	return $.merge( this, this.parents() );
+}
+
 return $.widget("ui.selectable", $.ui.mouse, {
 	version: "@VERSION",
 	options: {
@@ -131,7 +135,8 @@ return $.widget("ui.selectable", $.ui.mouse, {
 			}
 		});
 
-		$(event.target).parents().addBack().each(function() {
+		// Get the event target and parents in proper order
+		selfAndParents.call($(event.target)).each(function() {
 			var doSelect,
 				selectee = $.data(this, "selectable-item");
 			if (selectee) {
