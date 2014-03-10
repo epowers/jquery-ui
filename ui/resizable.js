@@ -323,7 +323,8 @@ $.widget("ui.resizable", $.ui.mouse, {
 
 		var curleft, curtop, cursor,
 			o = this.options,
-			el = this.element;
+			el = this.element,
+			borderBox = (el.css('box-sizing') === 'border-box');
 
 		this.resizing = true;
 
@@ -343,12 +344,15 @@ $.widget("ui.resizable", $.ui.mouse, {
 		this.size = this._helper ? {
 				width: this.helper.width(),
 				height: this.helper.height()
+			} : borderBox ? {
+				width: el.outerWidth(),
+				height: el.outerHeight()
 			} : {
 				width: el.width(),
 				height: el.height()
 			};
 
-		this.originalSize = this._helper ? {
+		this.originalSize = this._helper || borderBox ? {
 				width: el.outerWidth(),
 				height: el.outerHeight()
 			} : {
