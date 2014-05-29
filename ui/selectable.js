@@ -57,7 +57,7 @@ return $.widget("ui.selectable", $.ui.mouse, {
 
 		// cache selectee children based on filter
 		this.refresh = function() {
-			selectees = $(that.options.filter, that.element[0]);
+			selectees = that.selectees = $(that.options.filter, that.element[0]);
 			selectees.addClass("ui-selectee");
 			selectees.each(function() {
 				var $this = $(this),
@@ -77,8 +77,6 @@ return $.widget("ui.selectable", $.ui.mouse, {
 			});
 		};
 		this.refresh();
-
-		this.selectees = selectees.addClass("ui-selectee");
 
 		this._mouseInit();
 
