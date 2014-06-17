@@ -363,7 +363,10 @@ $.widget("ui.resizable", $.ui.mouse, {
 				height: el.height()
 			};
 
-		this.sizeDiff = {
+		this.sizeDiff = borderBox ? {
+			width: 0,
+			height: 0
+		} : {
 			width: el.outerWidth() - el.width(),
 			height: el.outerHeight() - el.height()
 		};
