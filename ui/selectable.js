@@ -163,6 +163,10 @@ return $.widget("ui.selectable", $.ui.mouse, {
 
 	_mouseDrag: function(event) {
 
+		if (!this.dragged && !($.ui.mouse.prototype._mouseDistanceMet.call(this, event) && $.ui.mouse.prototype._mouseDelayMet.call(this, event))) {
+			return false;
+		}
+
 		this.dragged = true;
 
 		if (this.options.disabled) {
@@ -286,6 +290,14 @@ return $.widget("ui.selectable", $.ui.mouse, {
 		this.helper.remove();
 
 		return false;
+	},
+
+	_mouseDistanceMet: function(/* event */) {
+		return true;
+	},
+
+	_mouseDelayMet: function(/* event */) {
+		return true;
 	}
 
 });
