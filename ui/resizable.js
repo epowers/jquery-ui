@@ -942,7 +942,7 @@ $.ui.plugin.add( "resizable", "containment", {
 				that.offset.top - cop.top :
 				(that.offset.top - co.top)) );
 
-		if ( woset + that.size.width >= that.parentData.width ) {
+		if ( woset + that.size.width > that.parentData.width ) {
 			that.size.width = that.parentData.width - woset;
 			if ( pRatio ) {
 				that.size.height = that.size.width / that.aspectRatio;
@@ -950,7 +950,7 @@ $.ui.plugin.add( "resizable", "containment", {
 			}
 		}
 
-		if ( hoset + that.size.height >= that.parentData.height ) {
+		if ( hoset + that.size.height > that.parentData.height ) {
 			that.size.height = that.parentData.height - hoset;
 			if ( pRatio ) {
 				that.size.width = that.size.height * that.aspectRatio;
