@@ -264,8 +264,6 @@ return $.widget("ui.selectable", $.ui.mouse, {
 	_mouseStop: function(event) {
 		var that = this;
 
-		this.dragged = false;
-
 		$(".ui-unselecting", this.element[0]).each(function() {
 			var selectee = $.data(this, "selectable-item");
 			selectee.$element.removeClass("ui-unselecting");
@@ -288,6 +286,8 @@ return $.widget("ui.selectable", $.ui.mouse, {
 		this._trigger("stop", event);
 
 		this.helper.remove();
+
+		this.dragged = false;
 
 		return false;
 	},
